@@ -104,7 +104,69 @@ function renderHome() {
     () => renderHistory(renderHome)
 
 }
+function renderStock() {
 
+  app.innerHTML = `
+
+  <div class="app">
+
+    <header class="header">
+      <h1>📦 Stock</h1>
+    </header>
+
+    <div class="card">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Core</th>
+            <th>Location</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          ${
+            stock.map((item,index)=>`
+
+            <tr>
+              <td>${item.core}</td>
+              <td>${item.location}</td>
+              <td>${item.quantity}</td>
+              <td>
+                <button onclick="deleteStock(${index})">
+                  Delete
+                </button>
+              </td>
+            </tr>
+
+            `).join('')
+          }
+
+        </tbody>
+
+      </table>
+
+      <br>
+
+      <button id="backBtn">
+        ← Dashboard
+      </button>
+
+    </div>
+
+  </div>
+
+  `
+
+
+  document.getElementById('backBtn')!.onclick =
+    renderHome
+
+}
 function renderGoodsIn() {
 
   app.innerHTML = `
